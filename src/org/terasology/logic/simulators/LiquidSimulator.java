@@ -44,7 +44,7 @@ public class LiquidSimulator extends Simulator {
         ArrayList<BlockPosition> currentActiveBlocks = new ArrayList<BlockPosition>(_activeBlocks);
 
         boolean simulated = false;
-        while (currentActiveBlocks.size() > 0) {
+        for (int i = currentActiveBlocks.size() - 1; i >= 0; i--) {
             simulated = true;
 
             int randomBlock = Math.abs(_parent.getRandom().randomInt()) % currentActiveBlocks.size();

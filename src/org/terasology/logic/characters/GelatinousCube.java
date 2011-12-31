@@ -86,15 +86,9 @@ public final class GelatinousCube extends Character {
         int light = GL20.glGetUniformLocation(ShaderManager.getInstance().getShader("gelatinousCube"), "light");
         GL20.glUniform1f(light, _parent.getRenderingLightValueAt(getPosition()));
 
-
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
         _mesh.render();
 
-        glDisable(GL_BLEND);
-
-        ShaderManager.getInstance().enableShader(null);
+        ShaderManager.getInstance().reEnableShader();
 
         glPopMatrix();
     }

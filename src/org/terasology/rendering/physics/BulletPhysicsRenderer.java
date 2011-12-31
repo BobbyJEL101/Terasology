@@ -173,7 +173,7 @@ public class BulletPhysicsRenderer implements RenderableObject, BlockObserver {
     }
 
     public void render() {
-        _discreteDynamicsWorld.stepSimulation(Terasology.getInstance().getDelta() / 1000f);
+        _discreteDynamicsWorld.stepSimulation(Terasology.getInstance().getDelta() / 1000f, 7);
 
         TextureManager.getInstance().bindTexture("terrain");
         ShaderManager.getInstance().enableShader("block");
@@ -228,7 +228,7 @@ public class BulletPhysicsRenderer implements RenderableObject, BlockObserver {
     private void removeBlocks() {
         if (_blocks.size() > 0) {
             for (int i = _blocks.size() - 1; i >= 0; i--) {
-                if (!_blocks.get(i).isActive()) {
+                if (_blocks.get(i).calcAgeInMs() > 4000) {
                     _discreteDynamicsWorld.removeRigidBody(_blocks.get(i));
                     _blocks.remove(i);
                 }

@@ -16,7 +16,7 @@ System {
     cloudUpdateInterval = (Integer) 1000
 
     // Defines the maximum amount of threads used for chunk generation
-    maxThreads = 2
+    maxThreads = 1
 
     // Enable/or disable the persisting of chunks
     saveChunks = true
@@ -55,22 +55,10 @@ Graphics {
 
     viewingDistanceNear = 8
     viewingDistanceModerate = 16
-    viewingDistanceFar = 26
+    viewingDistanceFar = 24
     viewingDistanceUltra = 32
 
-    // Splits chunk meshes into multiple sub-meshes to support frustum and occlusion culling techniques
     verticalChunkMeshSegments = 2
-
-    OcclusionCulling {
-
-        // Occlusion culling is currently disabled by default
-        enabled = false
-        // The last 60 % of the visible chunks will be culled using occlusion queries
-        distanceOffset = 0.4d
-        // Minimum time gap between queries and checks for available results
-        timeGap = 100l // ms
-
-    }
 
 }
 
@@ -118,7 +106,7 @@ World {
     defaultSeed = "Blockmania42"
 
     dayNightLengthInMs = new Long((60 * 1000) * 20) // 20 minutes in ms
-    initialTimeOffsetInMs = new Long(60 * 1000) // 120 seconds in ms
+    initialTimeOffsetInMs = 0l
 
     Biomes {
 
